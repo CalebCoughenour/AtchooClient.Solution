@@ -1,0 +1,15 @@
+@model AtchooClient.ViewModels.LoginViewModel
+
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Accounts", FormMethod.Post))
+{
+    @Html.LabelFor(user => user.Email)
+    @Html.TextBoxFor(user=> user.Email)
+
+    @Html.LabelFor(user=> user.Password)
+    @Html.PasswordFor(user=> user.Password)
+
+    <input type="submit" value="Login" />
+}
+
+@Html.ActionLink("Don't have an account? Register", "Register")
