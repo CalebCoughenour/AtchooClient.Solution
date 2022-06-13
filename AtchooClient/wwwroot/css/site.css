@@ -1,0 +1,92 @@
+html {
+  font-size: 14px;
+}
+
+
+/** Universal Color Palette**/
+:root {
+  --sneeze-green: #7aa231;
+  --yuck-grey: #b4bcba;
+  --dark-blue: #0a0b36;
+  --beige: #f7dba7;
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  background-color: var(--yuck-grey);
+}
+
+
+/** Link Styling **/
+a, button a {
+  text-decoration: none;
+  display: block;
+}
+
+
+/** Title Container **/
+
+.container {
+  margin: 0;
+}
+
+.text-center, main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-image {
+  position: relative;
+  top: -5rem;
+  bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.6);
+  box-shadow: 0 2px 2px 3px var(--dark-blue);
+}
+
+/** Buttons Container **/
+
+.button-footer {
+  display: flex;
+  margin: 0;
+  align-items: center;
+  top: 10%;
+}
+
+button {
+  border-radius: 60px;
+  box-shadow: 0 2px 1px 2px rgba(82, 81, 81, 0.396);
+}
+
+button:hover {
+  color: whitesmoke;
+  background-color: rgba(206, 200, 200, 0.791);
+  box-shadow: 0 2px 2px 2px var(--sneeze-green);
+}
+
+footer .container {
+  display: flex;
+  width: 20vw;
+  gap: 5%;
+}
