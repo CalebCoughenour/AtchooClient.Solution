@@ -37,10 +37,10 @@ namespace AtchooClient.Controllers
             HttpContext.Session.SetString("userId", userId);
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult Logoff()
-        {
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
-        }
+        // public ActionResult Logoff()
+        // {
+        //     HttpContext.Session.Clear();
+        //     return RedirectToAction("Index", "Home");
+        // }
     }
 }
