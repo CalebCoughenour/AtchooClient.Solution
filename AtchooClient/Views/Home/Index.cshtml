@@ -6,7 +6,20 @@
     <h1 class="display-4"></h1>
 </div>
 
+    <!-- <img class="banner-image" src="https://i.ibb.co/yVnNXJv/Atchoo-Banner.png"> -->
+<!-- 
 <div class="button-footer">
     <button>@Html.ActionLink("Register New Account", "Register", "Accounts")</button>
     <button>@Html.ActionLink("Login to Account", "Login", "Accounts")</button>
-</div>
+    <button>@Html.ActionLink("Allergen List", "Index", "UserAllergies")</button>
+    <button>@Html.ActionLink("Profile List", "Index", "UserProfiles")</button>
+</div> -->
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello @User.Identity.Name!</p>
+    @using (Html.BeginForm("Logoff", "Accounts"))
+    {
+        <input type="submit" class="btn btn-default" value="Logoff" />
+    }
+}
