@@ -1,19 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using AtchooClient.Models;
 using AtchooClient.ViewModels;
-using System.Web;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 
 namespace AtchooClient.Controllers
 {
-    public class AccountsController : Controller
+  public class AccountsController : Controller
     {
         private readonly AtchooClientContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
