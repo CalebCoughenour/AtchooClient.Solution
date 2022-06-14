@@ -15,13 +15,13 @@ namespace AtchooClient.Controllers
 {
   public class UserProfileController : Controller
   {
-    public ActionResult Index()
+    private readonly AtchooClientContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public UserProfileController(UserManager<ApplicationUser> userManager, AtchooClientContext db)
     {
-      if(string.IsNullOrEmpty(HttpContext.Session.GetString("userId")))
-      {
-        return RedirectToAction("Login", "Accounts");
-      }
-      return View();
-    }
+      _userManager = userManager;
+      _db = db;
+    } 
   }
 }
