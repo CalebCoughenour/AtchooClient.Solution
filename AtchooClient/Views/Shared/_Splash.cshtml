@@ -35,11 +35,7 @@
             @RenderBody()
             <img class="banner-image" src="https://i.ibb.co/yVnNXJv/Atchoo-Banner.png">
         </main>
+        @await Html.PartialAsync("Footer")
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - AtchooClient - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
 </body>
 </html>
