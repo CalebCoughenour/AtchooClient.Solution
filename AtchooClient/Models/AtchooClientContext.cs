@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 
 namespace AtchooClient.Models
 {
@@ -14,5 +15,26 @@ namespace AtchooClient.Models
     {
       optionsBuilder.UseLazyLoadingProxies();
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+			    base.OnModelCreating(modelBuilder);
+        	modelBuilder.Entity<UserAllergy>()
+            .HasData(
+                new UserAllergy
+                { 
+                  UserAllergyId = 1, 
+                  Allergy = "Lactose Intolerant"
+                },
+                new UserAllergy { UserAllergyId = 2, Allergy = "Pollen" },
+                new UserAllergy { UserAllergyId = 3, Allergy = "Dust"},
+                new UserAllergy { UserAllergyId = 4, Allergy = "Shellfish"},
+                new UserAllergy { UserAllergyId = 5, Allergy = "Peanuts"},
+                new UserAllergy { UserAllergyId = 6, Allergy = "Pet Fur"},
+                new UserAllergy { UserAllergyId = 7, Allergy = "Perfumes"},
+                new UserAllergy { UserAllergyId = 8, Allergy = "Insects"},
+                new UserAllergy { UserAllergyId = 9, Allergy = "Soy"},
+                new UserAllergy { UserAllergyId = 10, Allergy = "Gluten"}
+            );
+        }
   }
 }
