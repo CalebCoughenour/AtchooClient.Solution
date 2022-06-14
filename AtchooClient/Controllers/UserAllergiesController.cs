@@ -41,7 +41,7 @@ namespace AtchooClient.Controllers
       var thisAllergy = _db.UserAllergies
         .Include(userAllergy => userAllergy.JoinEntities)
         .ThenInclude(join => join.userProfile)
-        .FirstOrDefault(userAllergy => userAllergy.UserProfileId == id);
+        .FirstOrDefault(userAllergy => UserAllergy.UserProfileId == id);
       return View(thisAllergy);
     }
   }
