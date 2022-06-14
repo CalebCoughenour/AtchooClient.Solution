@@ -26,9 +26,24 @@ namespace AtchooClient
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddMvc();
+
+      services.AddEntityFrameworkMySql()
+          .AddDbContext<AtchooClientContext>(options => options
+          .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+
       services.AddDistributedMemoryCache();
       services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<AtchooClientContext>()
         .AddDefaultTokenProviders();
+        services.Configure<IdentityOptions>(options =>
+        {
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 0;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequiredUniqueChars = 0;
+        });
         services.AddSession(options =>
         {
             // options.IdleTimeout = TimeSpan.FromSeconds(10);
