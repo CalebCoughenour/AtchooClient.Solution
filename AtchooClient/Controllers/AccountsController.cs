@@ -9,38 +9,70 @@ using AtchooClient.Models;
 using AtchooClient.ViewModels;
 using System.Web;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace AtchooClient.Controllers
 {
     public class AccountsController : Controller
     {
-        public ActionResult Register()
+        private readonly AtchooClientContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public AccountsController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AtchooClientContext db)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _db = db;
+        }
+
+        public ActionResult Index()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Register(RegisterViewModel model)
+
+        public IActionResult Register()
         {
-            ApplicationUser.Register(model);
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Register (RegisterViewModel model)
+        {
+            var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LoginViewModel model)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
-            string userId = ApplicationUser.Login(model);
-            HttpContext.Session.SetString("userId", userId);
-            return RedirectToAction("Index", "Home");
+            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
-        // public ActionResult Logoff()
-        // {
-        //     HttpContext.Session.Clear();
-        //     return RedirectToAction("Index", "Home");
-        // }
+        [HttpPost]
+        public async Task<ActionResult> LogOff()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
