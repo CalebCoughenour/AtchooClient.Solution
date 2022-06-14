@@ -41,8 +41,28 @@ namespace AtchooClient.Controllers
       var thisAllergy = _db.UserAllergies
         .Include(userAllergy => userAllergy.JoinEntities)
         .ThenInclude(join => join.userProfile)
-        .FirstOrDefault(userAllergy => UserAllergy.UserProfileId == id);
+        .FirstOrDefault(userAllergy => userAllergy.UserAllergyId == id);
       return View(thisAllergy);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      var thisAllergy = _db.UserAllergies.FirstOrDefault(userAllergy => userAllergy.UserAllergyId == id);
+      return View(thisAllergy);
+    }
+    [HttpPost]
+    public ActionResult Edit(UserAllergy userAllergy)
+    {
+      _db.Entry(userAllergy).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      var thisAllergy = _db.UserAllergies.FirstOrDefault(userAllergy => userAllergy.UserAllergyId == id);
+      _db.UserAllergies.Remove(thisAllergy);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
