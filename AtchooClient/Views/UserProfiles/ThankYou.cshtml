@@ -1,14 +1,14 @@
 @model AtchooClient.Models.UserProfile
 
-@* <%-- @if(null != TempData["alertMessage"])
+@{
+   ViewBag.Title = "ThankYou";
+}
+
+@if(TempData["alertMessage"] != null)
    {
-      <script type="text/javascript">
-      window.onload = function () {
-         alert("@TempData[alertMessage]");
-      };
-      </script>
-   } --%> *@
+      @Html.Raw(TempData["alertMessage"])
+   }
 
-   <h1>You've Already added this Allergy</h1>
+<h1>You've Already added this Allergy</h1>
 
-   <button>@Html.ActionLink("Go Back", "Index", "UserProfiles")</button>
+<button>@Html.ActionLink("Go Back", "Index", "UserProfiles")</button>
