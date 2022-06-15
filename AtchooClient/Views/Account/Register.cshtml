@@ -8,29 +8,33 @@
 
     <div class= "inner-content">
 
-        @using (Html.BeginForm("Register", "Accounts", FormMethod.Post, new { @class="form-wrap" }))
-        {
-            <div class="form register">
-                @Html.LabelFor(user => user.Email)
-                @Html.TextBoxFor(user=> user.Email)
+        <div class="form-wrap">
 
-                @Html.LabelFor(user => user.UserName)
-                @Html.TextBoxFor(user=> user.UserName)
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class="form-wrap" }))
+            {
+                <div class="form">
+                    @Html.LabelFor(user => user.Email)
+                    @Html.TextBoxFor(user=> user.Email)
 
-                @Html.LabelFor(user=> user.Password)
-                @Html.PasswordFor(user=> user.Password)
+                    @Html.LabelFor(user => user.UserName)
+                    @Html.TextBoxFor(user=> user.UserName)
 
-                @Html.LabelFor(user=> user.ConfirmPassword)
-                @Html.PasswordFor(user=> user.ConfirmPassword)
+                    @Html.LabelFor(user=> user.Password)
+                    @Html.PasswordFor(user=> user.Password)
 
-                <input class="button" type="submit" value="Register" />
-            </div>
+                    @Html.LabelFor(user=> user.ConfirmPassword)
+                    @Html.PasswordFor(user=> user.ConfirmPassword)
 
-            <div class="extra-button">
-                <button>@Html.ActionLink("Login", "Login", "Accounts")</button>
-            </div>
+                    <input class="button" type="submit" value="Register" />
+                </div>
 
-        }   
+                <div class="extra-button">
+                    <button>@Html.ActionLink("Login", "Login", "Account")</button>
+                </div>
+
+        }
+
+        </div>
 
         <img id="logo" src="https://i.ibb.co/nkgC1YJ/logo.png" alt="logo">
 
