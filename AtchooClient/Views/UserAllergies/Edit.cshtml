@@ -1,0 +1,14 @@
+@model AtchooClient.Models.UserAllergy
+
+<h4>Edit: @Html.DisplayFor(model => model.Allergy)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.UserAllergyId)
+
+  @Html.LabelFor(model => model.Allergy)
+  @Html.EditorFor(model => model.Allergy)
+
+  <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Allergy List", "Index")</p>
