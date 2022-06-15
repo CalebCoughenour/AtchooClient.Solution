@@ -53,15 +53,15 @@ namespace AtchooClient.Controllers
     public ActionResult Details(int id)
     {
       var thisUserProfile = _db.UserProfiles
-        .Include(userprofile => userprofile.JoinEntities)
+        .Include(userProfile => userProfile.JoinEntities)
         .ThenInclude(join => join.userAllergy)
-        .FirstOrDefault(userprofile => userprofile.UserProfileId == id);
+        .FirstOrDefault(userProfile => userProfile.UserProfileId == id);
       return View(thisUserProfile);
     }
     public ActionResult Edit(int id)
     {
       var thisUserProfile = _db.UserProfiles.FirstOrDefault(userprofile => userprofile.UserProfileId == id);
-      ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Name");
+      ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Allergy");
       return View(thisUserProfile);
     }
     [HttpPost]
@@ -71,14 +71,14 @@ namespace AtchooClient.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult AddUserAllergy(int id)
+    public ActionResult AddAllergy(int id)
     {
-      var thisUserProfile = _db.UserProfiles.FirstOrDefault(userprofile => userprofile.UserProfileId == id);
-      ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Name");
+      var thisUserProfile = _db.UserProfiles.FirstOrDefault(userProfile => userProfile.UserProfileId == id);
+      ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Allergy");
       return View(thisUserProfile);
     }
     [HttpPost]
-    public ActionResult AddUserAllergy(UserProfile userprofile, int UserAllergyId)
+    public ActionResult AddAllergy(UserProfile userprofile, int UserAllergyId)
     {
       if(UserAllergyId != 0)
       {
@@ -88,10 +88,24 @@ namespace AtchooClient.Controllers
       return RedirectToAction("Index");
     }
     [HttpPost]
-    public ActionResult DeleteUserAllergy(int joinId)
+    public ActionResult DeleteAllergy(int joinId)
     {
       var joinEntry = _db.ProfileAllergies.FirstOrDefault(entry => entry.ProfileAllergyId == joinId);
       _db.ProfileAllergies.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      var thisUserProfile = _db.UserProfiles.FirstOrDefault(userprofile => userprofile.UserProfileId == id);
+      return View(thisUserProfile);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisUserProfile = _db.UserProfiles.FirstOrDefault(userprofile => userprofile.UserProfileId == id);
+      _db.UserProfiles.Remove(thisUserProfile);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
