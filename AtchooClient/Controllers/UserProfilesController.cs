@@ -80,12 +80,22 @@ namespace AtchooClient.Controllers
     [HttpPost]
     public ActionResult AddAllergy(UserProfile userprofile, int UserAllergyId)
     {
-      if(UserAllergyId != 0)
+      bool exists = _db.ProfileAllergies.Where(p => p.UserProfileId == userprofile.UserProfileId).Any(a => a.UserAllergyId == UserAllergyId);
+      if(UserAllergyId != 0 && !exists)
       {
         _db.ProfileAllergies.Add(new ProfileAllergy() {UserAllergyId = UserAllergyId, UserProfileId = userprofile.UserProfileId});
         _db.SaveChanges();
       }
-      return RedirectToAction("Index");
+      else
+      {
+        return RedirectToAction("ThankYou");
+      }
+      return RedirectToAction("Details", new {id = userprofile.UserProfileId});
+    }
+    public ActionResult ThankYou()
+    {
+      TempData["alertMessage"] = "<script>alert('You've Already added this Allergy');</script>";
+      return View();
     }
     [HttpPost]
     public ActionResult DeleteAllergy(int joinId)
