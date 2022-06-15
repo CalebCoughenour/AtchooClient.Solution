@@ -72,7 +72,7 @@ A web application that allows a user to create authentication and login to the w
 
 ## Known 🐛 Bugs
 
-No known bugs at this time.
+No known bugs at this time 
 
 ## 🎫 License 👈
 
