@@ -35,19 +35,6 @@ namespace AtchooClient.Models
                 new UserAllergy { UserAllergyId = 9, Allergy = "Soy"},
                 new UserAllergy { UserAllergyId = 10, Allergy = "Gluten"}
             );
-
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<UserProfile>()
-              .HasData(
-                  new UserProfile
-                  {
-                    UserProfileId = 1,
-                    Name = "John Doe",
-                    DOB = 010119999,
-                    Bio = "Just a dude",
-                    ProfileImg = "https://ibb.co/RcdCV40"
-                  }
-              );
         }
   }
 }
