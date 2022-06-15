@@ -1,0 +1,14 @@
+@model AtchooClient.Models.UserProfile
+
+
+<h4>Add an Allergy to your profile @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.UserProfileId)
+
+  @Html.Label("Select Allergy")
+  @Html.DropDownList("UserAllergyId")
+
+  <input type="submit" value="Save" class="btn btn-primary"/>
+}
