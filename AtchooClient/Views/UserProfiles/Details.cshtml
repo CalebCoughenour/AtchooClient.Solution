@@ -2,17 +2,20 @@
 
 <div class="user-page">
 
-  <div class="user-card">
-
     <div class="user-card-title">
-        <h2>User Details</h2>
+        <h2 style='color: white; transform: scale(1.3);'>User Details</h2>
     </div>
+
+
+  <div class="user-card">
 
     <div class="user-card-content">
 
+        <div class="user-card-content-deets">
+
         <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
         <h3>@Html.DisplayNameFor(model => model.DOB): @Html.DisplayFor(model => model.DOB)</h3>
-        <h3>@Html.DisplayNameFor(model => model.Bio): @Html.DisplayFor(model => model.Bio)</h3>
+        <!-- <h3>@Html.DisplayNameFor(model => model.Bio): @Html.DisplayFor(model => model.Bio)</h3> -->
 
 
         @if (@Model.JoinEntities.Count == 0)
@@ -22,29 +25,39 @@
         else
         {
           <h4>This user has these allergies:</h4>
+
           <ul>
           @foreach(var join in Model.JoinEntities)
           {
-            <li class="list-button">@join.userAllergy.Allergy</li>
-          @using (Html.BeginForm("DeleteAllergy", "UserProfiles"))
-            {
-              @Html.Hidden("joinId", @join.ProfileAllergyId)
-              <input type="submit" value="X" class='bi bi-trash'
-                  style='
-                    color: red;
-                    font-weight: 700;
-                    background-color: transparent;
-                    border-style: none;
-                    margin: 0;
-                  '/>
-            }
+            <li class="list-button">@join.userAllergy.Allergy
+
+                @using (Html.BeginForm("DeleteAllergy", "UserProfiles"))
+                  {
+                    @Html.Hidden("joinId", @join.ProfileAllergyId)
+                    <input type="submit" value="  X " class='bi bi-trash' id="trashyboi"
+                        style='
+                          color: crimson;
+                          font-weight: 800;
+                          background-color: transparent;
+                          border-style: none;
+                          margin: 0;
+                        '/>
+                  }
+
+            </li>
           }
           </ul>
         }
 
+        </div>
+        <div class="user-card-content-pic"><p>(Photo goes here)</p></div>
     </div>
 
-    <div class="user-button-footer" id="user-deets">
+    <div class="user-card-content-bio">
+      <h3>@Html.DisplayNameFor(model => model.Bio): @Html.DisplayFor(model => model.Bio)</h3>
+    </div>
+
+    <div class="user-button-footer" id="user-config">
         <button>@Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserProfileId })</button>
         <button>@Html.ActionLink("Delete Profile", "Delete", new { id = Model.UserProfileId })</button>
         <button>@Html.ActionLink("Add an Allergy", "AddAllergy", new { id = Model.UserProfileId })</button>
