@@ -31,16 +31,22 @@ namespace AtchooClient.Controllers
     }
     public ActionResult Create()
     {
+      ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Allergy");
       return View();
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(UserProfile userprofile)
+    public async Task<ActionResult> Create(UserProfile userProfile, int UserAllergyId)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      userprofile.User = currentUser;
-      _db.UserProfiles.Add(userprofile);
+      userProfile.User = currentUser;
+      _db.UserProfiles.Add(userProfile);
+      _db.SaveChanges();
+      if (UserAllergyId != 0)
+      {
+        _db.ProfileAllergies.Add(new ProfileAllergy() { UserAllergyId = UserAllergyId, UserProfileId = userProfile.UserProfileId });
+      }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
