@@ -1,10 +1,11 @@
 @import url("~/lib/bootstrap/dist/css/bootstrap.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
-html {
+html, a {
   font-family: "Josefin Sans";
   font-weight: 600;
   /* background-color: #26277caa; */
+  font-size: 20px;
 }
 
 
@@ -32,9 +33,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 5vh;
   /* margin-bottom: 60px; */
   background-color: #26277c93;
+  gap: 5vh;
 }
 
 h5  {
@@ -49,11 +51,12 @@ General Centering
 
 *****/
 
-.main, .extra-button {
+main, .extra-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* margin-left: -1em; */
 }
 
 
@@ -63,13 +66,18 @@ a, button a {
   text-decoration: none;
   display: block;
   font-family: "Josefin Sans";
+  font-weight: 600;
   margin: 3px;
   border-style: none;
+  color: var(--dark-blue);
 }
 
 /** Title Container **/
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0;
   height: 50%;
 }
@@ -124,6 +132,7 @@ button, .button, .list-button {
 .list-button {
   color: var(--dark-blue);
   padding: .2rem;
+  margin: 2%;
   list-style: none;
   display: flex;
   float: left;
@@ -258,26 +267,119 @@ UserProfiles/Details/{id}  &&  User Card
 
 *******/
 
+.user-page {
+  margin: 10%;
+}
+
+.user-card-title {
+  margin-left: 15%;
+}
 
 .user-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  width: 40vw;
+  background-color: aliceblue;
+  padding: 2em;
+  border-radius: 40px 40px;
+  box-shadow: 7px 6px rgba(82, 81, 81, 0.296);
+}
+
+.user-card ::after {
+  background-image: url("https://i.ibb.co/nkgC1YJ/logo.png");
+  background-size: cover;
+  opacity: 0.2;
+}
+
+.user-card-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  gap: 1em;
+}
+
+.user-card-content-pic {
+  display: flex;
+  justify-content: center;
+  inset: 0;
+  width: 100%;
+  height: 90%;
+  margin: 5% auto;
+  background-color: rgb(213, 213, 213);
+}
+
+.user-card-content-bio {
+  margin: 5% 0;
 }
 
 .user-button-footer {
   display: flex;
 }
 
+#user-config{
+  margin: 2%;
+}
+
+#trashyboi:hover {
+  transform: scale(0.94);
+  color: red;
+  cursor: pointer;
+  filter: drop-shadow(1px 1px rgba(82, 82, 82, 0.3));
+}
 
 
+/*****
+
+Nav Bar
+
+*****/
 
 
+.topnav {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  padding: 1%;
+  margin-bottom: 5vh;
+  background-color: #26277c93;
+}
 
+.topnav {
+  /* background-color: #333; */
+  overflow: hidden;
+}
 
+.topnav #nav-link {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
+.topnav #nav-link:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+#nav-name-link {
+  margin-left: 10px;
+  margin-right: 15px;
+  float: left;
+  text-decoration: none;
+  color: yellow;
+  text-shadow: rgb(0, 0, 0) 2px 2px;
+}
 
 
 /*****
@@ -288,11 +390,18 @@ Media Querires
 
 
 
-@media (min-width: 768px) {
+@media (max-width: 900px) {
 
   html, a {
     font-size: 20px;
   }
 
+  .container {
+    margin: 0 auto;
+  }
+
+  .user-card {
+    width: 90vw;
+  }
 
 }
