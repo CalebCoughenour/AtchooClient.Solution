@@ -39,6 +39,12 @@ body {
   gap: 5vh;
 }
 
+h2.splash-intro {
+  padding-top: 1.1rem;
+  color: aliceblue;
+  transform: scale(1.3);
+}
+
 h5  {
   display: flex;
   justify-content: center;
@@ -59,6 +65,9 @@ main, .extra-button {
   /* margin-left: -1em; */
 }
 
+main {
+  margin-top: 12%;
+}
 
 /** Link Styling **/
 
@@ -340,6 +349,7 @@ Nav Bar
 .topnav {
   display: flex;
   position: absolute;
+  justify-content: center;
   width: 100vw;
   top: 0;
   left: 0;
@@ -349,32 +359,46 @@ Nav Bar
 }
 
 .topnav {
-  /* background-color: #333; */
   overflow: hidden;
 }
 
-.topnav #nav-link {
+.topnav #nav-link, #nav-link-logoff {
+  display: flex;
   float: left;
-  color: #f2f2f2;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 20px;
 }
 
+#nav-link-logoff, #nav-link-logoff > * {
+  background-color: transparent;
+  color: (var--beige);
+  border-radius: 30px 30px;
+}
+
+/* #nav-link-logoff:active {
+
+} */
+
 .topnav #nav-link:hover {
-  background-color: #ddd;
-  color: black;
+  animation-duration: 300ms;
+  color: #04AA6D;
 }
 
 .topnav a.active {
   background-color: #04AA6D;
-  color: white;
+  color: #04AA6D;
+  text-decoration: underline;
+  border-radius: 10px 10px;
 }
 
 #nav-name-link {
-  margin-left: 10px;
-  margin-right: 15px;
+  margin-left: 1%;
+  margin-right: 20%;
   float: left;
   text-decoration: none;
   color: yellow;
@@ -390,18 +414,93 @@ Media Querires
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
   html, a {
     font-size: 20px;
   }
 
-  .container {
-    margin: 0 auto;
+  body, .container {
+    margin: 0;
+    width: 100vw;
   }
 
   .user-card {
-    width: 90vw;
+    width: 60vw;
   }
+
+
+  
+
+  /*****
+
+  Nav Bar
+
+  *****/
+
+
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 5vw;
+    margin-bottom: 5vh;
+    background-color: #26277c93;
+  }
+
+  .topnav {
+    /* background-color: #333; */
+    overflow: hidden;
+  }
+
+  .topnav #nav-link {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    /* padding: 2%; */
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav #nav-link:hover {
+    background-color: aliceblue;
+    color: black;
+  }
+
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: #04AA6D;
+  }
+
+  #nav-name-link {
+    /* margin-left: 1%; */
+    margin-right: 10vw;
+    float: left;
+    text-decoration: none;
+    color: yellow;
+    text-shadow: rgb(0, 0, 0) 2px 2px;
+  }
+
+
+  .user-page {
+    margin-top: -10%;
+  }
+
+  .user-card-content {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .user-card-content-pic {
+    height: 25vh;
+    width: 100%;
+  }
+
 
 }
