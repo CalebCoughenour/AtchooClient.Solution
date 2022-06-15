@@ -30,6 +30,7 @@ namespace AtchooClient
       services.AddEntityFrameworkMySql()
           .AddDbContext<AtchooClientContext>(options => options
           .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+      
 
       services.AddDistributedMemoryCache();
       services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -44,13 +45,13 @@ namespace AtchooClient
             options.Password.RequireUppercase = false;
             options.Password.RequiredUniqueChars = 0;
         });
-        services.AddSession(options =>
-        {
-            // options.IdleTimeout = TimeSpan.FromSeconds(10);
-            options.Cookie.HttpOnly = true;
-            options.Cookie.IsEssential = true;
-        });
-    }
+         services.AddSession(options =>
+         {
+             // options.IdleTimeout = TimeSpan.FromSeconds(10);
+             options.Cookie.HttpOnly = true;
+             options.Cookie.IsEssential = true;
+         });
+     }
 
     public void Configure(IApplicationBuilder app)
     {
