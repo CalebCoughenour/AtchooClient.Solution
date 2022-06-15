@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AtchooClient</title>
+    <!-- <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AtchooClient.styles.css" asp-append-version="true" />
 </head>
@@ -12,8 +13,10 @@
         <main role="main" class="pb-3">
             @RenderBody()
             <div class="button-footer">
+            
+                <button>@Html.ActionLink("Home", "Index", "Home")</button>
                 <button>@Html.ActionLink("Allergen List", "Index", "UserAllergies")</button>
-                <button>@Html.ActionLink("Profile List", "Index", "UserProfiles")</button>
+                <button>@Html.ActionLink("View Profile", "Index", "UserProfiles")</button>
             </div>
         </main>
         @await Html.PartialAsync("Footer")
