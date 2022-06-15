@@ -9,37 +9,31 @@
     <link rel="stylesheet" href="~/AtchooClient.styles.css" asp-append-version="true" />
 </head>
     <header>
-        <!-- <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AtchooClient</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
     </header>
+    <div class="topnav">
+        <a id="nav-name-link" href="/"><h1 class="nav-title">Atchoo</h1></a>
+        <a id="nav-link" href="/" class="active">Home</a>
+        <a id="nav-link" href="/UserAllergies/Index">Allergy List</a>
+        <a id="nav-link" href="/UserProfiles/Index">Profile</a>
+        @if (User.Identity.IsAuthenticated)
+            {
+                <a id="nav-link-logoff">@using (Html.BeginForm("LogOff", "Account"))
+                {
+                 <input type="submit" value="Logout">
+                }</a>
+            }
+        else
+            {
+                <a id="nav-link" href="/Account/Login">Login</a>
+                <a id="nav-link" href="/Account/Register">Register New Account</a>
+            }
+    </div>
 <body>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
-            <img class="banner-image" src="https://i.ibb.co/yVnNXJv/Atchoo-Banner.png">
-            <div class="button-footer">
-                <button>@Html.ActionLink("Register New Account", "Register", "Account")</button>
-                <button>@Html.ActionLink("Login to Account", "Login", "Account")</button>
-                <button>@Html.ActionLink("Allergen List", "Index", "UserAllergies")</button>
-                <button>@Html.ActionLink("View Profile", "Index", "UserProfiles")</button>
-            </div>
+            <img class="banner-image" src="https://i.ibb.co/yVnNXJv/Atchoo-Banner.png"
+            style="border-radius: 40px 40px">
         </main>
         @await Html.PartialAsync("Footer")
     </div>
