@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Web;
+using System.ComponentModel;
 
 namespace AtchooClient.Models
 {
@@ -20,7 +22,9 @@ namespace AtchooClient.Models
     public string DOB { get; set; }
     [Required]
     public string Bio { get; set; }
+    [DisplayName("Upload File")]
     public string ProfileImg { get; set; }
+    // public HttpPostedFileBase ImageFile {get; set;}
     public virtual ApplicationUser User { get; set; }
     public virtual ICollection<ProfileAllergy> JoinEntities { get; }
   }
