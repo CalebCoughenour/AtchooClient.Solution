@@ -1,0 +1,12 @@
+@model AtchooClient.Models.UserAllergy
+
+<h2>Do you want to delete @Html.DisplayFor(model => model.Allergy)?</h2>
+
+@* @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Allergy) *@
+
+@using (Html.BeginForm())
+{
+    <input class="myCssClass" type="submit" value="Delete" />
+}
+</br>
+@Html.ActionLink("Allergy List", "Index")
