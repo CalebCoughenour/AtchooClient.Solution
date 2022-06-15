@@ -10,14 +10,34 @@
 </head>
 <body>
     <div class="container">
+
+        <div class="topnav">
+        <a id="nav-name-link" href="/"><h1 class="nav-title">Atchoo</h1></a>
+        <a id="nav-link" href="/" class="active">Home</a>
+        <a id="nav-link" href="/UserAllergies/Index">Allergy List</a>
+        <a id="nav-link" href="/UserProfiles/Index">Profile</a>
+        @if (User.Identity.IsAuthenticated)
+            {
+                <a id="nav-link-logoff">@using (Html.BeginForm("LogOff", "Account"))
+                {
+                 <input type="submit" value="Logout">
+                }</a>
+            }
+        else
+            {
+                <a id="nav-link" href="/Account/Login">Login</a>
+                <a id="nav-link" href="/Account/Register">Register New Account</a>
+            }
+        </div>
+
         <main role="main" class="pb-3">
             @RenderBody()
-            <div class="button-footer">
+            <!-- <div class="button-footer">
             
                 <button>@Html.ActionLink("Home", "Index", "Home")</button>
                 <button>@Html.ActionLink("Allergen List", "Index", "UserAllergies")</button>
                 <button>@Html.ActionLink("View Profile", "Index", "UserProfiles")</button>
-            </div>
+            </div> -->
         </main>
         @await Html.PartialAsync("Footer")
     </div>
