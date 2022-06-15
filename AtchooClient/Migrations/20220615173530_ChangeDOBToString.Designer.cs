@@ -3,14 +3,16 @@ using System;
 using AtchooClient.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AtchooClient.Migrations
 {
     [DbContext(typeof(AtchooClientContext))]
-    partial class AtchooClientContextModelSnapshot : ModelSnapshot
+    [Migration("20220615173530_ChangeDOBToString")]
+    partial class ChangeDOBToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
