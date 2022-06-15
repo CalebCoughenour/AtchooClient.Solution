@@ -1,0 +1,20 @@
+@model AtchooClient.Models.UserProfile
+
+<h4>Create Your Profile</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.DOB)
+  @Html.TextBoxFor(model => model.DOB)
+
+  @Html.LabelFor(model => model.Bio)
+  @Html.TextBoxFor(model => model.Bio)
+
+  @Html.Label("Select Allergy")
+  @Html.DropDownList("UserAllergyId")
+
+  <input type="submit" value="create profile" class="btn btn-primary" />
+}
