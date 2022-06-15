@@ -9,9 +9,9 @@ namespace AtchooClient.Models
     {
       this.JoinEntities = new HashSet<ProfileAllergy>();
     }
-
-    public string Allergy { get; set; }
     public int UserAllergyId { get; set; }
+    public string Allergy { get; set; }
+    
     public virtual ICollection<ProfileAllergy> JoinEntities { get; set; }    
   }
 }
