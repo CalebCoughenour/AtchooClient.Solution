@@ -1,20 +1,33 @@
+
 @model AtchooClient.Models.UserProfile
 
 <h4>Create Your Profile</h4>
 
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
+<div class= "inner-content">
 
-  @Html.LabelFor(model => model.DOB)
-  @Html.TextBoxFor(model => model.DOB)
+      <div class="form-wrap">
 
-  @Html.LabelFor(model => model.Bio)
-  @Html.TextBoxFor(model => model.Bio)
+            @using (Html.BeginForm())
+            {
+              <div class = "form">
 
-  @Html.Label("Select Allergy")
-  @Html.DropDownList("UserAllergyId")
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name, new { required = "required" })
 
-  <input type="submit" value="create profile" class="btn btn-primary" />
-}
+                @Html.Label("Date of Birth")
+                @Html.TextBoxFor(model => model.DOB, new { required = "required", @type = "date", value = "model.DOB" })
+
+                @Html.LabelFor(model => model.Bio)
+                @Html.TextAreaFor(model => model.Bio, new { required = "required", maxlength=250, @class = "form-control" })
+
+                @Html.Label("Select Allergy")
+                @Html.DropDownList("UserAllergyId")
+
+                <input class="button" type="submit" value="create profile" class="btn btn-primary" />
+
+              </div>
+            }
+
+      </div>
+
+</div>
