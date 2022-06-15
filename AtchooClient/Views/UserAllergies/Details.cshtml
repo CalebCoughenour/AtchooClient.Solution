@@ -1,20 +1,30 @@
 @model AtchooClient.Models.UserAllergy
 
-<h3>@Html.DisplayNameFor(model => model.Allergy): @Html.DisplayFor(model => model.Allergy)</h3>
+
+<div class="user-page">
+
+    <h3>@Html.DisplayNameFor(model => model.Allergy): @Html.DisplayFor(model => model.Allergy)</h3>
 
 
-@if(@Model.JoinEntities.Count == 0)
-{
-  <p>No Profiles</p>
-}
-else
-{
-  <p>Profiles:</p>
-  <ul>
-  @foreach(var join in Model.JoinEntities)
-  {
-    <li>@Html.ActionLink(@join.userProfile.Name, "Details", "UserProfiles", new { id = join.userProfile.UserProfileId})</li> 
-  }
-  </ul>
-}
-<p>@Html.ActionLink("Delete This Allergy", "Delete", new { id = Model.UserAllergyId })</p>
+    @if(@Model.JoinEntities.Count == 0)
+    {
+      <p>No Profiles</p>
+    }
+    else
+    {
+      <p>Profiles:</p>
+      <ul>
+      @foreach(var join in Model.JoinEntities)
+      {
+        <div class="card">
+          <li>@join.userProfile.Name</li>
+          <li>@join.userProfile.DOB</li>
+          <li>@join.userProfile.Bio</li>
+        </div>
+      }
+      </ul>
+    }
+    <p>@Html.ActionLink("Delete This Allergy", "Delete", new { id = Model.UserAllergyId })</p>
+
+
+</div>
