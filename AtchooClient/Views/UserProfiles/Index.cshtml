@@ -1,12 +1,9 @@
-
-<h1>Users</h1>
-
   @if ( Model.Count != 0)
   {
   <ul>
     @foreach (UserProfile userProfile in Model)
     {
-      <li>@Html.ActionLink($"{userProfile.Name}", "Details", new { id = userProfile.UserProfileId })</li>
+      <li class="list-button">@Html.ActionLink($"{userProfile.Name}", "Details", new { id = userProfile.UserProfileId })</li>
     }
   </ul>
   } 
@@ -15,8 +12,3 @@
     <h3>No Users have been added yet!</h3>
     <p>@Html.ActionLink("Create Your Account", "Create", "UserProfiles")</p>
   }
-
-
-
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

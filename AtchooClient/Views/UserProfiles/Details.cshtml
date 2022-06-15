@@ -29,18 +29,25 @@
           @using (Html.BeginForm("DeleteAllergy", "UserProfiles"))
             {
               @Html.Hidden("joinId", @join.ProfileAllergyId)
-              <input type="submit" value="X" class='bi bi-trash' style='color: red' />
+              <input type="submit" value="X" class='bi bi-trash'
+                  style='
+                    color: red;
+                    font-weight: 700;
+                    background-color: transparent;
+                    border-style: none;
+                    margin: 0;
+                  '/>
             }
           }
           </ul>
         }
 
-        <div class="user-button-footer" id="user-deets">
-            <button>@Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserProfileId })</button>
-            <button>@Html.ActionLink("Delete Profile", "Delete", new { id = Model.UserProfileId })</button>
-            <button>@Html.ActionLink("Add an Allergy", "AddAllergy", new { id = Model.UserProfileId })</button>
-        </div>
+    </div>
 
+    <div class="user-button-footer" id="user-deets">
+        <button>@Html.ActionLink("Edit Profile", "Edit", new { id = Model.UserProfileId })</button>
+        <button>@Html.ActionLink("Delete Profile", "Delete", new { id = Model.UserProfileId })</button>
+        <button>@Html.ActionLink("Add an Allergy", "AddAllergy", new { id = Model.UserProfileId })</button>
     </div>
 
   </div>

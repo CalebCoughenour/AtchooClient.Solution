@@ -4,9 +4,9 @@
 <ul>
   @foreach(UserAllergy userAllergy in Model)
   {
-    <li>@Html.ActionLink($"{userAllergy.Allergy}", "Details", new { id = userAllergy.UserAllergyId })</li>
+    <li class="list-button">@Html.ActionLink($"{userAllergy.Allergy}", "Details", new { id = userAllergy.UserAllergyId })</li>
   }
 </ul>
 
-<p>@Html.ActionLink("Add Your Weird Allergy", "Create", "UserAllergies")
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<button>@Html.ActionLink("Add Your Weird Allergy", "Create", "UserAllergies")</button>
+<button>@Html.ActionLink("Home", "Index", "Home")</button>
