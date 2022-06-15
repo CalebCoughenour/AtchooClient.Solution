@@ -9,20 +9,25 @@
 
     <div class= "inner-content">
 
-    @using (Html.BeginForm("Login", "Accounts", FormMethod.Post, new { @class="form-wrap" }))
-    {
-        <div class="form">
-            @Html.LabelFor(user => user.UserName)
-            @Html.TextBoxFor(user=> user.UserName)
+            <div class="form-wrap">
 
-            @Html.LabelFor(user=> user.Password)
-            @Html.PasswordFor(user=> user.Password)
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class="form-wrap" }))
+                {
+                    <div class="form">
+                        @Html.LabelFor(user => user.UserName)
+                        @Html.TextBoxFor(user=> user.UserName)
 
-            <input class="button" type="submit" value="Login" />
-        </div>
-        
-        <button>@Html.ActionLink("Don't have an account? Register", "Register")</button>
-    }
+                        @Html.LabelFor(user=> user.Password)
+                        @Html.PasswordFor(user=> user.Password)
+
+                        <input class="button" type="submit" value="Login" />
+                    </div>
+                    
+                    <h5 style="color:white">"Don't have an account?</h5>
+                    <button>@Html.ActionLink("Register", "Register")</button>
+                }
+
+            </div>
 
     
     <img id="logo" src="https://i.ibb.co/nkgC1YJ/logo.png" alt="logo">
