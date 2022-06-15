@@ -1,0 +1,23 @@
+@model AtchooClient.Models.UserProfile
+
+<h4>Edit Profile:</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.UserProfileId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name, new { value="model.Name", required = "required" })
+
+  @Html.Label("Date of Birth")
+  @Html.TextBoxFor(model => model.DOB, new { required = "required", @type = "date", value = "model.DOB" })
+
+  @Html.Label("Bio")
+  @Html.EditorFor(model => model.Bio, new {htmlAttributes = new {maxlength=250, @class = "form-control"}})
+
+  @Html.Label("Select Allergy")
+  @Html.DropDownList("UserAllergyId")
+
+  <input type="submit" value="save" class="btn btn-success" />
+}
+<p>@Html.ActionLink("Back To Profile", "Index")</p>
