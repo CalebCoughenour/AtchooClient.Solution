@@ -3,3 +3,4 @@
 */appsettings.json
 /.vscode
 **/lib/
+EnvironmentVariables.cs
