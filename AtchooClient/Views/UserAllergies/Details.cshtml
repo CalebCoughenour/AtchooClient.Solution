@@ -1,0 +1,19 @@
+@model AtchooClient.Models.UserAllergy
+
+<h3>@Html.DisplayNameFor(model => model.Allergy): @Html.DisplayFor(model => model.Allergy)</h3>
+
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>No Profiles</p>
+}
+else
+{
+  <p>Profiles:</p>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.userProfile.Name</li> 
+  }
+  </ul>
+}

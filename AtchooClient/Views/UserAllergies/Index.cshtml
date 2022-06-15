@@ -1,0 +1,12 @@
+<h1>Allergies</h1>
+
+
+<ul>
+  @foreach(UserAllergy userAllergy in Model)
+  {
+    <li>@Html.ActionLink($"{userAllergy.Allergy}", "Details", new { id = userAllergy.UserAllergyId })</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Add Your Weird Allergy", "Create", "UserAllergies")
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

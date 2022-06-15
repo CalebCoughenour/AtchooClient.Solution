@@ -1,0 +1,9 @@
+@model AtchooClient.Models.UserAllergy
+
+<h4>Add a new Allergy</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Allergy)
+  @Html.TextBoxFor(model => model.Allergy)
+  <input type="submit" value="Add new allergy" class="btn btn-primary"/>
+}
