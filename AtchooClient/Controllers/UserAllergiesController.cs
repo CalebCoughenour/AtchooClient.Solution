@@ -25,6 +25,8 @@ namespace AtchooClient.Controllers
     public ActionResult Index()
     {
       List<UserAllergy> model = _db.UserAllergies.ToList();
+      ViewBag.UserProfiles = _db.UserProfiles.ToList();
+      ViewBag.ProfileAllergies = _db.ProfileAllergies.ToList();
       return View(model);
     } 
     public ActionResult Details(int id)
@@ -43,13 +45,12 @@ namespace AtchooClient.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(UserAllergy userAllergy, int UserProfileId)
+    public ActionResult Create(UserAllergy userAllergy)
     {
-      _db.UserAllergies.Add(userAllergy);
-      _db.SaveChanges();
-      if (UserProfileId != 0)
+      bool exists = _db.UserAllergies.Any(a => a.Allergy.ToUpper() == userAllergy.Allergy.ToUpper());
+      if(!exists)
       {
-        _db.ProfileAllergies.Add(new ProfileAllergy() { UserProfileId = UserProfileId, UserAllergyId = userAllergy.UserAllergyId });
+        _db.UserAllergies.Add(userAllergy);
         _db.SaveChanges();
       }
       return RedirectToAction("Index");
