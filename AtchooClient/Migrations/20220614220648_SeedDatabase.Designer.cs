@@ -3,14 +3,16 @@ using System;
 using AtchooClient.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AtchooClient.Migrations
 {
     [DbContext(typeof(AtchooClientContext))]
-    partial class AtchooClientContextModelSnapshot : ModelSnapshot
+    [Migration("20220614220648_SeedDatabase")]
+    partial class SeedDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,16 +196,6 @@ namespace AtchooClient.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserProfiles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserProfileId = 1,
-                            Bio = "Just a dude",
-                            DOB = 10119999,
-                            Name = "John Doe",
-                            ProfileImg = "https://ibb.co/RcdCV40"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
