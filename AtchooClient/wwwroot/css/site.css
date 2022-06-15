@@ -1,5 +1,10 @@
+@import url("~/lib/bootstrap/dist/css/bootstrap.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 html {
-  font-size: 14px;
+  font-family: "Josefin Sans";
+  font-weight: 600;
+  /* background-color: #26277caa; */
 }
 
 
@@ -14,13 +19,7 @@ Universal Color Palette
   --yuck-grey: #b4bcba;
   --dark-blue: #0a0b36;
   --beige: #f7dba7;
-}
-
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+  --light-purple: #26277caa;
 }
 
 html {
@@ -33,8 +32,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 60px;
-  background-color: var(--yuck-grey);
+  margin-top: 10vh;
+  /* margin-bottom: 60px; */
+  background-color: #26277c93;
+}
+
+h5  {
+  display: flex;
+  justify-content: center;
+  color: var(--light-purple);
 }
 
 /***** 
@@ -56,16 +62,16 @@ General Centering
 a, button a {
   text-decoration: none;
   display: block;
+  font-family: "Josefin Sans";
+  margin: 3px;
+  border-style: none;
 }
-
-/** Navbar Styling **/
-
-
 
 /** Title Container **/
 
 .container {
   margin: 0;
+  height: 50%;
 }
 
 .title {
@@ -93,19 +99,40 @@ a, button a {
   box-shadow: 0 2px 2px 3px var(--dark-blue);
 }
 
-/*** Buttons Container ***/
+/****Buttons Container ***/
 
-.button-footer {
+.button-footer, .user-button-footer {
   display: flex;
   margin: 0;
   align-items: center;
-  top: 50%;
+  /* top: -100%; */
 }
 
-button, .button {
+button, .button, .list-button {
   border-radius: 60px;
+  border-style: none;
   box-shadow: 0 2px 1px 2px rgba(82, 81, 81, 0.396);
-  margin-top: 10%;
+  margin: 5% 0;
+  background-color: rgb(255, 244, 244);
+  color: var(--dark-blue);
+}
+
+.button a {
+  color: var(--dark-blue);
+}
+
+.list-button {
+  color: var(--dark-blue);
+  padding: .2rem;
+  list-style: none;
+  display: flex;
+  float: left;
+}
+
+.list-button:hover {
+  color: var(--dark-blue);
+  box-shadow: 0 2px 2px 2px var(--sneeze-green);
+  cursor: pointer;
 }
 
 button:hover, .button:hover {
@@ -115,22 +142,31 @@ button:hover, .button:hover {
 
 footer .container {
   display: flex;
-  margin-top: 1vh;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
-  width: 18vw;
+  text-align: center;
+  width: 50vw;
   gap: 2%;
+  margin-top: 10vh;
+}
+
+.extra-button {
+  display: flex;
+  /* justify-content: center; */
+  /* flex-direction: flex-start; */
 }
 
 .extra-button button {
   width: 70%;
-  margin-left: 10%;
+  margin-left: 15%;
+  padding: 0;
 }
 
 
 /****
 
-  Accounts/Register Styling
+  General Form Styling
 
 ****/
 
@@ -149,21 +185,36 @@ footer .container {
 
 .form-wrap {
   background-color: var(--dark-blue);
-  height: 26vh;
+  height: 50%;
   width: 24vh;
-  border-radius: 30px 30px 30px 5px;
+  padding: 1%;
+  border-radius: 30px 5px 30px 5px;
+}
+
+.form-wrap input {
+  height: 105%;
+}
+
+.form-wrap form {
+  padding: auto;
+}
+
+.form-wrap button {
+  margin-left: 24%;
+  margin-top: -8%;
 }
 
 .form {
   background-color: var(--beige);
   display: flex;
   width: 100%;
-  height: 80%;
+  height: 90%;
   flex-direction: column;
   justify-content: center;
   /* height: 12vh; */
   margin: 1.5rem;
-  padding: 10%;
+  padding: 11%;
+  gap: 2px;
   border-radius: 30px 5px 30px 5px;
 }
 
@@ -175,6 +226,73 @@ footer .container {
   justify-content: center;
   width: 30%;
   height: 40%;
-  transform: rotateY(360deg);
-  animation-duration: 10s;
+  margin-left: 2%;
+}
+
+textarea.form-control {
+  height: 150px;
+  margin: 0px;
+  resize: both;
+}
+
+.form-control {
+  height: 150px;
+  margin: 0px;
+  resize: both;
+  overflow: none;
+}
+
+
+/******
+
+UserProfiles/Create
+
+******/
+
+
+
+
+/******
+
+UserProfiles/Details/{id}  &&  User Card
+
+*******/
+
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+
+.user-button-footer {
+  display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+/*****
+
+Media Querires
+
+*****/
+
+
+
+@media (min-width: 768px) {
+
+  html, a {
+    font-size: 20px;
+  }
+
+
 }
