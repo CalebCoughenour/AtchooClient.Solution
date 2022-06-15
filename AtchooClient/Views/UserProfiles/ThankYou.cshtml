@@ -1,0 +1,14 @@
+@model AtchooClient.Models.UserProfile
+
+@* <%-- @if(null != TempData["alertMessage"])
+   {
+      <script type="text/javascript">
+      window.onload = function () {
+         alert("@TempData[alertMessage]");
+      };
+      </script>
+   } --%> *@
+
+   <h1>You've Already added this Allergy</h1>
+
+   <button>@Html.ActionLink("Go Back", "Index", "UserProfiles")</button>
