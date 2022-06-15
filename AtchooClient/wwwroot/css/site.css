@@ -263,11 +263,24 @@ textarea.form-control {
 
 /******
 
-UserProfiles/Create
+UserAllergies
 
 ******/
 
+.allergy-page ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  width: 40vw;
+  background-color: aliceblue;
+  padding: 2em;
+  border-radius: 40px 40px;
+  box-shadow: 7px 6px rgba(82, 81, 81, 0.296);
+}
 
+.allergy-page h1 {
+  color: aliceblue;
+}
 
 
 /******
