@@ -2,27 +2,31 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using AtchooClient.Models;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AtchooClient.Controllers
 {
-    
-    public class UserAllergiesController : Controller
+  [Authorize]
+  public class UserAllergiesController : Controller
   {
     private readonly AtchooClientContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public UserAllergiesController(AtchooClientContext db)
+    public UserAllergiesController(UserManager<ApplicationUser> userManager, AtchooClientContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
    
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<UserAllergy> model = _db.UserAllergies.ToList();
       return View(model);
-    }
+    } 
     public ActionResult Details(int id)
     {
       var thisAllergy = _db.UserAllergies
@@ -30,6 +34,25 @@ namespace AtchooClient.Controllers
         .ThenInclude(join => join.userProfile)
         .FirstOrDefault(userAllergy => userAllergy.UserAllergyId == id);
       return View(thisAllergy);
+    }
+
+    public ActionResult Create()
+    {
+      ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Name");
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(UserAllergy userAllergy, int UserProfileId)
+    {
+      _db.UserAllergies.Add(userAllergy);
+      _db.SaveChanges();
+      if (UserProfileId != 0)
+      {
+        _db.ProfileAllergies.Add(new ProfileAllergy() { UserProfileId = UserProfileId, UserAllergyId = userAllergy.UserAllergyId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Index");
     }
   }
 }
