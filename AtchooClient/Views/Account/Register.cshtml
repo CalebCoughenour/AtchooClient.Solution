@@ -1,0 +1,42 @@
+
+@model AtchooClient.ViewModels.RegisterViewModel
+
+<div class="Register">
+
+    <div class="title">
+    </div>
+
+    <div class= "inner-content">
+
+        @using (Html.BeginForm("Register", "Accounts", FormMethod.Post, new { @class="form-wrap" }))
+        {
+            <div class="form register">
+                @Html.LabelFor(user => user.Email)
+                @Html.TextBoxFor(user=> user.Email)
+
+                @Html.LabelFor(user => user.UserName)
+                @Html.TextBoxFor(user=> user.UserName)
+
+                @Html.LabelFor(user=> user.Password)
+                @Html.PasswordFor(user=> user.Password)
+
+                @Html.LabelFor(user=> user.ConfirmPassword)
+                @Html.PasswordFor(user=> user.ConfirmPassword)
+
+                <input class="button" type="submit" value="Register" />
+            </div>
+
+            <div class="extra-button">
+                <button>@Html.ActionLink("Login", "Login", "Accounts")</button>
+            </div>
+
+        }   
+
+        <img id="logo" src="https://i.ibb.co/nkgC1YJ/logo.png" alt="logo">
+
+
+    </div>
+
+
+
+</div>
