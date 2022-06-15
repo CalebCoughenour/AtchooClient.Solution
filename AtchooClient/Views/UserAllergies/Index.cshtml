@@ -1,12 +1,14 @@
-<h1>Allergies</h1>
+<h1>Click Your Allergy to find a Match!</h1>
 
+    <div class="allergy-page">
 
-<ul>
-  @foreach(UserAllergy userAllergy in Model)
-  {
-    <li class="list-button">@Html.ActionLink($"{userAllergy.Allergy}", "Details", new { id = userAllergy.UserAllergyId })</li>
-  }
-</ul>
+        <ul>
+          @foreach(UserAllergy userAllergy in Model)
+          {
+            <li class="list-button">@Html.ActionLink($"{userAllergy.Allergy}", "Details", new { id = userAllergy.UserAllergyId })</li>
+          }
+        </ul>
 
-<button>@Html.ActionLink("Add Your Weird Allergy", "Create", "UserAllergies")</button>
-<button>@Html.ActionLink("Home", "Index", "Home")</button>
+    </div>
+
+    <button>@Html.ActionLink("Add Your Weird Allergy", "Create", "UserAllergies")</button>
