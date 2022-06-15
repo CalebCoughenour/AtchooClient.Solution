@@ -3,32 +3,29 @@
 ![At'choo Banner](AtchooClient/wwwroot/img/banner-small.png)
 
 #### By Meron Tekie, Mark McConnel, Caleb Coughenour, Marcus Lorenzo, Jake Edgar, and Evgeniya Meshuris
-____
+
 ## A web application for an allergy-themed dating app 
-___
-## 🖥️ Technologies Used
-* C#
-* DotNet 
-* Razor 
-* HTML
-* CSS
-* Entity Core
-* Identity Authorization
-* MySQL
-* Javascript
-* REPL
-* Git
-* VsCode 
-___
+
+## 🖥️ Technologies Used 
+
+<br><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" width="60" height="60"/> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-plain-wordmark.svg" width="60" height="60"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain-wordmark.svg" width="60" height="60"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain-wordmark.svg" width="60" height="60"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" width="60" height="60"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain-wordmark.svg" width="60" height="60"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain-wordmark.svg" width="60" height="60"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original-wordmark.svg" width="60" height="60"/><br>
+
 ## ✅ Description
 
-A web application that allows a user to create authentication and login to the website with their authenticated creditentials. After becoming an authorized user, a user can create a user profile and add their allergies. Once their user proflie and allergies have been added our application will match users with otherusers with complimentary/similar allergies for dating purposes. The application has user authentication and only logged-in users can create, update and delete. 
-___
-## ⚙️ Setup/Installation Requirements
----
-* First, make sure you have MySql Workbench downloaded and properly installed. You will also need a text editor and a command line that you are comfortable with. 
+A web application that allows a user to create authentication and login to the website with their authenticated credentials. After becoming an authorized user, a user can create a user profile and add their allergies. Once their user profile and allergies have been added our application will match users with other users with complimentary/similar allergies for dating purposes. The application has full crud functionality for authenticated users. Non-authenticated users can interact with the site and see the full list of allergies.
 
-* In your command line navigate to your desktop directory and clone this project using *Git Clone*
+## ⚙️ Setup/Installation Requirements
+
+* First, make sure you have MySql Workbench downloaded and properly installed. You will also need a text editor and a command-line that you are comfortable with. 
+
+* In your command line navigate to your desktop directory and clone this project <https://github.com/CalebCoughenour/AtchooClient.Solution>
 
 * Open the project in your preferred text editor, we recommend VSCode.
 * In the root directory, confirm there is a .gitignore file
@@ -61,7 +58,7 @@ ___
   * Run ```dotnet add package Pomelo.EntityFrameworkCore.MySql -v 5.0.0-alpha.2```
   * Run ```dotnet add package Microsoft.EntityFrameworkCore.Proxies -v 5.0.0```
   * Run ```dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore -v 5.0.0```
-* Once all of the necessary setup is in place, In your command line navigate to the directory "AtchooClient" and run the following commands in order:
+* Once all of the necessary set-up is in place, In your command line navigate to the directory "AtchooClient" and run the following commands in order:
     * ```dotnet restore```
     * ```dotnet build```
     * ```dotnet ef migrations add Initial```
@@ -71,13 +68,13 @@ ___
     * ```dotnet run```
 
 * To interact with the local host website navigate to the project directory and run ```dotnet run```
-* Click on  <http://localhost:5000>
-___
+* Click on  <http://localhost:5000> and you are in there like swimwear!
+
 ## Known 🐛 Bugs
 
 No known bugs at this time.
-___
+
 ## 🎫 License 👈
 
 Licensed under the [MIT License](LICENSE).
-Copyright (c) 2022 Meron Tekie, Mark McConnel, Caleb Coughenour, Marcus Lorenzo, Jake Edgar and Evgeniya Meshuris
+Copyright (c) 2022 <br>Meron Tekie [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/meron-tekie/) ----- Mark McConnel [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/mark-mcconnell1/) ----- Caleb Coughenour [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/caleb-coughenour/) ----- Marcus Lorenzo [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/marcusanthonylorenzo/) Jake Edgar [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/jake-m-edgar/) ----- Evgeniya Meshuris [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/evmeshuris/)
