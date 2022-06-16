@@ -91,6 +91,11 @@ a, button a {
   height: 50%;
 }
 
+.splash-intro {
+  margin-top: -10%;
+}
+
+
 .title {
   display: flex;
   margin-top: 10vh;
@@ -121,6 +126,7 @@ a, button a {
 .button-footer, .user-button-footer {
   display: flex;
   margin: 0;
+  gap: 2px;
   align-items: center;
   /* top: -100%; */
 }
@@ -245,6 +251,7 @@ footer .container {
   width: 30%;
   height: 40%;
   margin-left: 2%;
+  border-style: none;
 }
 
 textarea.form-control {
@@ -260,23 +267,36 @@ textarea.form-control {
   overflow: none;
 }
 
+
+
  /*****
 
 User Profile Card Allergy Details
 
 *****/
 
+
+
 .card {
-  margin: auto;
+ 
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 100%;
   
   border-style: solid;
   border-width: 2px;
   border-color: black;
+  text-align: center;
 }
 
-.card-body {
-  margin: auto;
-}
+/* .card-body {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+} */
 
 .card-title {
   margin-top: 5px;
@@ -329,6 +349,24 @@ UserAllergies
   justify-content: center;
 }
 
+.allergies-card img {
+  display: flex;
+  transform: scale(0.9);
+  top: 20%;
+}
+
+.allergies-card > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.user-page .allergies-card {
+  height: 70%;
+}
+
 /******
 
 UserProfiles/Details/{id}  &&  User Card
@@ -376,16 +414,24 @@ UserProfiles/Details/{id}  &&  User Card
   width: 100%;
   height: 90%;
   margin: 5% auto;
-  background-color: rgb(213, 213, 213);
+  background-color: transparent;
 }
 
 .user-card-content-bio {
+  width: 100%;
   margin: 5% 0;
 }
 
 .user-button-footer {
   display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 1%;
 }
+
+/* .user-button-footer button {
+  width: max-content;
+} */
 
 #user-config{
   margin: 2%;
@@ -396,6 +442,16 @@ UserProfiles/Details/{id}  &&  User Card
   color: red;
   cursor: pointer;
   filter: drop-shadow(1px 1px rgba(82, 82, 82, 0.3));
+}
+
+/*****
+
+IMG
+
+*****/
+
+img{
+  border: 2px solid black;
 }
 
 
@@ -465,6 +521,14 @@ Nav Bar
   text-shadow: rgb(0, 0, 0) 2px 2px;
 }
 
+/*
+  fix userAllergy card overflow?
+*/
+
+/* .col-md-4 {
+  width: max-content;
+} */
+
 
 /*****
 
@@ -480,10 +544,18 @@ Media Querires
     font-size: 20px;
   }
 
-  body, .container {
+ .container, body {
     margin: 0;
-    width: 100vw;
+    width: 100%;
   }
+
+
+/* 
+  main {
+    display: flex;
+    position: relative;
+    margin-top: 80%;
+  } */
 
   .user-card, .allergy-page ul {
     width: 90vw;
@@ -496,17 +568,17 @@ Media Querires
 
   *****/
 
-
   .topnav {
     display: flex;
     flex-direction: column;
     position: relative;
     justify-content: center;
+    align-items: center;
     width: 100%;
     top: 0;
     left: 0;
     padding: 5vw;
-    margin-bottom: 5vh;
+    /* margin-bottom: 15vh; */
     background-color: #26277c93;
   }
 
@@ -535,9 +607,12 @@ Media Querires
   }
 
   #nav-name-link {
+    display: flex;
+    justify-content: center;
     /* margin-left: 1%; */
-    margin-right: 10vw;
-    float: left;
+    margin-right: 5vw;
+    /* float: center; */
+    align-items: center;
     text-decoration: none;
     color: yellow;
     text-shadow: rgb(0, 0, 0) 2px 2px;
@@ -561,3 +636,4 @@ Media Querires
   }
 
 
+}
