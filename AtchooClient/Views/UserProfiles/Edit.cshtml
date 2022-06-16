@@ -2,19 +2,21 @@
 
 <h4>Edit Profile:</h4>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit","UserProfiles",FormMethod.Post,new {enctype ="multipart/form-data"}))
 {
   @Html.HiddenFor(model => model.UserProfileId)
 
   @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name, new { value="model.Name", required = "required" })
+  @Html.EditorFor(model => model.Name, new { value="model.Name", required = "required" })<br>
 
-  @Html.Label("Date of Birth")
-  @Html.TextBoxFor(model => model.DOB, new { required = "required", @type = "date", value = "model.DOB" })
+  <br>@Html.Label("Date of Birth")
+  @Html.TextBoxFor(model => model.DOB, new { required = "required", @type = "date", value = "model.DOB" })<br>
 
-  @Html.Label("Bio")
+  <br>@Html.Label("Bio")
   @Html.EditorFor(model => model.Bio, new {htmlAttributes = new {maxlength=250, @class = "form-control"}})
+
+  <input  type="file" name="FrontImage" required/>
 
   <input type="submit" value="save" class="btn btn-success" />
 }
-<p>@Html.ActionLink("Back To Profile", "Index")</p>
+<br><p>@Html.ActionLink("Back To Profile", "Index")</p>
