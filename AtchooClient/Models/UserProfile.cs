@@ -24,10 +24,9 @@ namespace AtchooClient.Models
     public string DOB { get; set; }
     [Required]
     public string Bio { get; set; }
-    // [DisplayName("Upload File")]
-    // public string ProfileImg { get; set; }
-    
-    // public IFormFile ImageFile {get; set;}
+     [NotMapped]
+    public IFormFile FrontImage { get; set;}
+    public string ImageUrl { get; set; }
     public virtual ApplicationUser User { get; set; }
     public virtual ICollection<ProfileAllergy> JoinEntities { get; }
   }
