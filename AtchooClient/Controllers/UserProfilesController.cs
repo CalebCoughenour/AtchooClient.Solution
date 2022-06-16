@@ -89,6 +89,7 @@ namespace AtchooClient.Controllers
     }
     public ActionResult Details(int id)
     {
+      ViewBag.UserAllergies = _db.UserAllergies.ToList();
       var thisUserProfile = _db.UserProfiles
         .Include(userProfile => userProfile.JoinEntities)
         .ThenInclude(join => join.userAllergy)
