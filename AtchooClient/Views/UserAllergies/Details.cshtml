@@ -3,32 +3,59 @@
 
 <div class="user-page">
 
-    <h3>@Html.DisplayNameFor(model => model.Allergy): @Html.DisplayFor(model => model.Allergy)</h3>
+    <div class="matches-card"
+        style="
+          margin: 0 auto;
+          justify-content: center;
+          height: 50%;
+        ">
+        <div class="matches-card-title" style="display: flex; justify-content: center; align-items: center;">
+
+            <h3>@Html.DisplayNameFor(model => model.Allergy) matches for:
+                <span style="green">
+                    @Html.DisplayFor(model => model.Allergy)
+                </span>
+            </h3>
+            
+        </div>
 
 
-    @if(@Model.JoinEntities.Count == 0)
-    {
-      <p>No Profiles Added Yet</p>
-    }
-    else
-    {
-      <p>Profiles:</p>
-      <div class="row"> 
-        @foreach(var join in Model.JoinEntities)
+
+        @if(@Model.JoinEntities.Count == 0)
         {
-          <div class="col-md-4">
-            <div class="card h-100 w-100">
-              <div class="card-title">
-                <p>@join.userProfile.Name</p>
-              </div>
-              <div class="card-body">
-                <p>DOB: @join.userProfile.DOB</p>
-                <p>Bio: @join.userProfile.Bio</p>
-              </div>
-            </div>
+          <p>No Profiles Have this allergy (Yet)</p>
+        }
+        else
+        {
+          <div class="row">
+            
+              @foreach(var join in Model.JoinEntities)
+              {
+                <div class="col-md-4 mb-4">
+                  <div class="card h-100" style="max-width: 20rem;">
+                    <div class="card-title">
+                      <h4 style="margin: 5%">@join.userProfile.Name</h4>
+                    </div>
+                    <img class="card-img-top" src="~/img/@join.userProfile.ImageUrl" />
+                    <div class="card-text" style="
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: left;
+                    ">
+                      <p><h5>DOB:</h5> @join.userProfile.DOB</p>
+                      <p><h5>Bio:</h5> @join.userProfile.Bio</p>
+                    </div>              
+                  </div>
+                </div>
+              }
+          
           </div>
-        } 
-      </div>
-    }
+        }
 
+        
+
+       <button>@Html.ActionLink("Go Back", "Index", "UserAllergies")</button>
+
+
+    </div>
 </div>
