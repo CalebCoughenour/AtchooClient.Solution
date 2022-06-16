@@ -72,7 +72,6 @@ A web application that allows a user to create authentication and login to the w
 
 ## Known 🐛 Bugs
 
-* Edit Photo in Edit Profile currently does not upload a new photo
 * If no profile image is uploaded to a user profile it shows a broken image link
 * Users can enter the direct URL to other profiles and Edit/Delete that respective profile
 * Users can see other profiles listed for an allergy even if they don't have that allergy listed in their profile 
