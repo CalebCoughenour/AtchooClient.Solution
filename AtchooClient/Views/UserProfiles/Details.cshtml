@@ -13,48 +13,58 @@
 
         <div class="user-card-content-deets">
 
-        <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-        <h3>@Html.DisplayNameFor(model => model.DOB): @Html.DisplayFor(model => model.DOB)</h3>
-        <!-- <h3>@Html.DisplayNameFor(model => model.Bio): @Html.DisplayFor(model => model.Bio)</h3> -->
+          <div class="user-card-info"
+            style="
+              display: grid;
+              grid-template-rows: 1fr 1fr;
+              justify-content: left;
+          ">
+              <h4>@Html.DisplayNameFor(model => model.Name):</h4> <p>@Html.DisplayFor(model => model.Name)</p>
+              <h4>@Html.DisplayNameFor(model => model.DOB):</h4> <p>@Html.DisplayFor(model => model.DOB)</p>
+          </div>
 
+          <div class="user-card-allergy-list" style="margin-top: 1%">
 
-        @if (@Model.JoinEntities.Count == 0)
-        {
-          <p>This user does not have any allergies :-|</p>
-        }
-        else
-        {
-          <h4>This user has these allergies:</h4>
+              @if (@Model.JoinEntities.Count == 0)
+              {
+                <p>This user does not have any allergies :-|</p>
+              }
+              else
+              {
+                <h5>This user has these allergies:</h5>
+                    <ul>
 
-          <ul>
-          @foreach(var join in Model.JoinEntities)
-          {
-            <li class="list-button">@join.userAllergy.Allergy
+                        @foreach(var join in Model.JoinEntities)
+                        {
+                          <li class="list-button" style="transform: scale(0.8); width: max-content;">
 
-                @using (Html.BeginForm("DeleteAllergy", "UserProfiles"))
-                  {
-                    @Html.Hidden("joinId", @join.ProfileAllergyId)
-                    <input type="submit" value="  X " class='bi bi-trash' id="trashyboi"
-                        style='
-                          color: crimson;
-                          font-weight: 800;
-                          background-color: transparent;
-                          border-style: none;
-                          margin: 0;
-                        '/>
-                  }
+                           @Html.ActionLink($"{join.userAllergy.Allergy}", "Details", "UserAllergies", new { id = join.userAllergy.UserAllergyId } )
 
-            </li>
-          }
-          </ul>
-        }
+                              @using (Html.BeginForm("DeleteAllergy", "UserProfiles"))
+                                {
+                                  @Html.Hidden("joinId", @join.ProfileAllergyId)
+                                  <input type="submit" value="  X " class='bi bi-trash' id="trashyboi"
+                                      style='
+                                        color: crimson;
+                                        font-weight: 800;
+                                        background-color: transparent;
+                                        border-style: none;
+                                        margin: 0;
+                                      '/>
+                                }
+
+                          </li>
+                        }
+                    </ul>
+                }
+          </div>
 
         </div>
-        <div class="user-card-content-pic"><p>(Photo goes here)</p></div>
+        <img class="card-img-top"src="~/img/@Model.ImageUrl" />
     </div>
 
     <div class="user-card-content-bio">
-      <h3>@Html.DisplayNameFor(model => model.Bio): @Html.DisplayFor(model => model.Bio)</h3>
+      <h4>@Html.DisplayNameFor(model => model.Bio):</h4> <p>@Html.DisplayFor(model => model.Bio)</p>
     </div>
 
     <div class="user-button-footer" id="user-config">
