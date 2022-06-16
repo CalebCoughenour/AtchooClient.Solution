@@ -64,7 +64,6 @@ A web application that allows a user to create authentication and login to the w
     * ```dotnet ef migrations add Initial```
 * Once we have verified that the migration looks correct and made any necessary changes, we'll run the following commands: 
     * ```dotnet ef database update```
-    * ```dotnet ef database update```
     * ```dotnet run```
 
 * To interact with the local host website navigate to the project directory and run ```dotnet run```
