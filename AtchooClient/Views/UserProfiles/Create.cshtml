@@ -7,7 +7,7 @@
 
       <div class="form-wrap">
 
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Create","UserProfiles",FormMethod.Post,new {enctype ="multipart/form-data"}))
             {
               <div class = "form">
 
@@ -19,6 +19,8 @@
 
                 @Html.LabelFor(model => model.Bio)
                 @Html.TextAreaFor(model => model.Bio, new { required = "required", maxlength=250, @class = "form-control" })
+                
+                <input  type="file" name="ImageFile" required/>
 
                 @Html.Label("Select Allergy")
                 @Html.DropDownList("UserAllergyId")
