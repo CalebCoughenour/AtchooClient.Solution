@@ -6,4 +6,7 @@ const setActive = (e) => {
 };
 
 const navItems = document.querySelectorAll(".topnav a#nav-link");
-navItems.forEach( e => e.onclick( setActive(e) ));
+navItems.forEach( e => { 
+  e.removeAttribute("class");
+  e.onclick( setActive(e) );
+});
