@@ -9,6 +9,10 @@ using System.Security.Claims;
 using AtchooClient.Models;
 using System.IO;
 using System.Web;
+using Microsoft.AspNetCore.Hosting;
+using AtchooClient.ViewModels;
+using System;
+
 
 namespace AtchooClient.Controllers
 {
@@ -17,11 +21,13 @@ namespace AtchooClient.Controllers
   {
     private readonly AtchooClientContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IWebHostEnvironment webHostEnvironment;
 
-    public UserProfilesController(UserManager<ApplicationUser> userManager, AtchooClientContext db)
+    public UserProfilesController(UserManager<ApplicationUser> userManager, AtchooClientContext db,IWebHostEnvironment webHost)
     {
       _userManager = userManager;
       _db = db;
+      webHostEnvironment =webHost;
     } 
   
     public async Task<ActionResult> Index()
@@ -36,6 +42,21 @@ namespace AtchooClient.Controllers
       ViewBag.UserAllergyId = new SelectList(_db.UserAllergies, "UserAllergyId", "Allergy");
       return View();
     }
+     public string UploadFile(UserProfile userProfile)
+    {
+      string uniqueFilName = null;
+      if(userProfile.FrontImage!=null)
+      {
+        string uploadFolder =Path.Combine(webHostEnvironment.WebRootPath,"img");
+        uniqueFilName = Guid.NewGuid().ToString()+"_"+ userProfile.FrontImage.FileName;
+        string filePath =Path.Combine(uploadFolder,uniqueFilName);
+        using(var fileStream = new FileStream(filePath,FileMode.Create))
+        {
+          userProfile.FrontImage.CopyTo(fileStream);
+        }
+      }
+      return uniqueFilName;
+    }
 
     [HttpPost]
     public async Task<ActionResult> Create(UserProfile userProfile, int UserAllergyId)
@@ -46,11 +67,16 @@ namespace AtchooClient.Controllers
       // userProfile.ProfileImg ="~/wwwroot/img/" + fileName;
       // fileName =Path.Combine(Server.MapPath("~/wwwroot/img/"),fileName);
       // userProfile.ImageFile.SaveAs(fileName);
-      
+     
       
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       userProfile.User = currentUser;
+       string uniqueFilName =UploadFile(userProfile);
+      userProfile.ImageUrl =uniqueFilName;
+      _db.Attach(userProfile);
+      
+
       _db.UserProfiles.Add(userProfile);
       _db.SaveChanges();
       if (UserAllergyId != 0)
@@ -78,6 +104,10 @@ namespace AtchooClient.Controllers
     [HttpPost]
     public ActionResult Edit(UserProfile userprofile)
     {
+      string uniqueFilName =UploadFile(userprofile);
+      userprofile.ImageUrl =uniqueFilName;
+      //  _db.Attach(userprofile);
+      // _db.Attach(userprofile);
       _db.Entry(userprofile).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
