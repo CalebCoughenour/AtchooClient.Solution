@@ -8,23 +8,27 @@
 
     @if(@Model.JoinEntities.Count == 0)
     {
-      <p>No Profiles</p>
+      <p>No Profiles Added Yet</p>
     }
     else
     {
       <p>Profiles:</p>
-      <ul>
-      @foreach(var join in Model.JoinEntities)
-      {
-        <div class="card">
-          <li>@join.userProfile.Name</li>
-          <li>@join.userProfile.DOB</li>
-          <li>@join.userProfile.Bio</li>
-        </div>
-      }
-      </ul>
+      <div class="row"> 
+        @foreach(var join in Model.JoinEntities)
+        {
+          <div class="col-md-4">
+            <div class="card h-100 w-100">
+              <div class="card-title">
+                <p>@join.userProfile.Name</p>
+              </div>
+              <div class="card-body">
+                <p>DOB: @join.userProfile.DOB</p>
+                <p>Bio: @join.userProfile.Bio</p>
+              </div>
+            </div>
+          </div>
+        } 
+      </div>
     }
-    <p>@Html.ActionLink("Delete This Allergy", "Delete", new { id = Model.UserAllergyId })</p>
-
 
 </div>
