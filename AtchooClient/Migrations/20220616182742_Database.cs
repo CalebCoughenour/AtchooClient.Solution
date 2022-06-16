@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AtchooClient.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -172,10 +172,10 @@ namespace AtchooClient.Migrations
                 {
                     UserProfileId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    DOB = table.Column<int>(type: "int", nullable: false),
-                    Bio = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    ProfileImg = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    DOB = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    Bio = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    ImageUrl = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
                     UserId = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: true)
                 },
                 constraints: table =>
@@ -213,6 +213,23 @@ namespace AtchooClient.Migrations
                         principalTable: "UserProfiles",
                         principalColumn: "UserProfileId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserAllergies",
+                columns: new[] { "UserAllergyId", "Allergy" },
+                values: new object[,]
+                {
+                    { 1, "Lactose Intolerant" },
+                    { 2, "Pollen" },
+                    { 3, "Dust" },
+                    { 4, "Shellfish" },
+                    { 5, "Peanuts" },
+                    { 6, "Pet Fur" },
+                    { 7, "Perfumes" },
+                    { 8, "Insects" },
+                    { 9, "Soy" },
+                    { 10, "Gluten" }
                 });
 
             migrationBuilder.CreateIndex(
