@@ -4,18 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AtchooClient</title>
-    <!-- <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AtchooClient.styles.css" asp-append-version="true" />
 </head>
 <body>
     <div class="container">
-
+        @using AtchooClient.Models
         <div class="topnav">
-        <a id="nav-name-link" href="/"><h1 class="nav-title">Atchoo</h1></a>
-        <a id="nav-link" href="/" class="active">Home</a>
+        <a id="nav-name-link" href="/"><h1 class="nav-title">Atchoo - Dating Site</h1></a>
+        <a id="nav-link" href="/">Home</a>
         <a id="nav-link" href="/UserAllergies/Index">Allergy List</a>
         <a id="nav-link" href="/UserProfiles/Index">Profile</a>
+
         @if (User.Identity.IsAuthenticated)
             {
                 <a id="nav-link-logoff">@using (Html.BeginForm("LogOff", "Account"))
