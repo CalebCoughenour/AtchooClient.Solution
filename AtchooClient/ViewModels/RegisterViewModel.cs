@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 
+
 namespace AtchooClient.ViewModels
 {
   public class RegisterViewModel
   {
     [Required]
-    [EmailAddress]
     [Display(Name = "Email")]
+    [EmailAddress]
     public string Email { get; set; }
     
     [Required]
