@@ -66,7 +66,7 @@ main, .extra-button {
 }
 
 main {
-  margin-top: 12%;
+  margin-top: 15%;
 }
 
 /** Link Styling **/
@@ -260,6 +260,40 @@ textarea.form-control {
   overflow: none;
 }
 
+ /*****
+
+User Profile Card Allergy Details
+
+*****/
+
+.card {
+  margin: auto;
+  
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+.card-body {
+  margin: auto;
+}
+
+.card-title {
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+/*****
+
+Footer
+
+*****/
+
+.bless-you{
+  color: black;
+}
+
 
 /******
 
@@ -280,8 +314,20 @@ UserAllergies
 
 .allergy-page h1 {
   color: aliceblue;
+  
 }
 
+.allergy-page li, .allergy-page a{
+  display: block;
+  justify-content: center;
+  text-align: center;
+}
+
+.allergy-page a {
+  display: block;
+  text-align: center;
+  justify-content: center;
+}
 
 /******
 
@@ -291,6 +337,7 @@ UserProfiles/Details/{id}  &&  User Card
 
 .user-page {
   margin: 10%;
+  margin-top: 0;
 }
 
 .user-card-title {
@@ -414,7 +461,7 @@ Nav Bar
   margin-right: 20%;
   float: left;
   text-decoration: none;
-  color: yellow;
+  color: #7aa231;
   text-shadow: rgb(0, 0, 0) 2px 2px;
 }
 
@@ -438,12 +485,10 @@ Media Querires
     width: 100vw;
   }
 
-  .user-card {
-    width: 60vw;
+  .user-card, .allergy-page ul {
+    width: 90vw;
   }
 
-
-  
 
   /*****
 
@@ -516,4 +561,3 @@ Media Querires
   }
 
 
-}
