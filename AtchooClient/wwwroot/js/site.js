@@ -1,11 +1,9 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+const setActive = (e) => {
 
-// Write your JavaScript code.
+  e.setAttribute("class", "active");
+  console.log(e, this)
+};
 
-
-const clickHandler = document.querySelector("#nav-link");
-const navlink = document.querySelector("#nav-link a.active");
-console.log(clickHandler), navLink
-
-
+const navItems = document.querySelectorAll(".topnav a#nav-link");
+navItems.forEach( e => e.onclick( setActive(e) ));
