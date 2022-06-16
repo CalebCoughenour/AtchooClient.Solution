@@ -25,7 +25,7 @@ namespace AtchooClient.Controllers
     public ActionResult Index()
     {
       List<UserAllergy> model = _db.UserAllergies.ToList();
-      ViewBag.UserProfiles = _db.UserProfiles.ToList();
+      // ViewBag.UserProfiles = _db.UserProfiles.ToList();
       ViewBag.ProfileAllergies = _db.ProfileAllergies.ToList();
       return View(model);
     } 
