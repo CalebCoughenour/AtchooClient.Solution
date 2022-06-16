@@ -3,13 +3,17 @@
 
 <h4>Create Your Profile</h4>
 
-<div class= "inner-content">
+<div class= "inner-content"
+    style="
+    display: flex;
+    justify-content: center;
+    margin-left: 30%">
 
-      <div class="form-wrap">
+      <div class="form-wrap" style="margin: 0 auto;">
 
             @using (Html.BeginForm("Create","UserProfiles",FormMethod.Post,new {enctype ="multipart/form-data"}))
             {
-              <div class = "form">
+              <div class = "form" style="width: 200%;">
 
                 @Html.LabelFor(model => model.Name)
                 @Html.TextBoxFor(model => model.Name, new { required = "required" })
@@ -20,7 +24,7 @@
                 @Html.LabelFor(model => model.Bio)
                 @Html.TextAreaFor(model => model.Bio, new { required = "required", maxlength=250, @class = "form-control" })
                 
-                <input  type="file" name="ImageFile" required/>
+                <input  type="file" name="FrontImage" />
 
                 @Html.Label("Select Allergy")
                 @Html.DropDownList("UserAllergyId")
