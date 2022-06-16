@@ -1,12 +1,9 @@
 ﻿
-const setActive = (e) => {
-
-  e.setAttribute("class", "active");
-  console.log(e, this)
-};
-
-const navItems = document.querySelectorAll(".topnav a#nav-link");
-navItems.forEach( e => { 
-  e.removeAttribute("class");
-  e.onclick( setActive(e) );
-});
+// const navItems = document.querySelectorAll(".topnav a#nav-link");
+// navItems.forEach( (e, i) => {
+//   e.addEventListener("click", () => {
+//     navItems[i].removeAttribute("class");
+//     e.setAttribute("class", "active");
+//     console.log(navItems, e)
+//   });
+// });
