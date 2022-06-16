@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Web;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AtchooClient.Models
 {
@@ -22,9 +24,10 @@ namespace AtchooClient.Models
     public string DOB { get; set; }
     [Required]
     public string Bio { get; set; }
-    [DisplayName("Upload File")]
-    public string ProfileImg { get; set; }
-    // public HttpPostedFileBase ImageFile {get; set;}
+    // [DisplayName("Upload File")]
+    // public string ProfileImg { get; set; }
+    
+    // public IFormFile ImageFile {get; set;}
     public virtual ApplicationUser User { get; set; }
     public virtual ICollection<ProfileAllergy> JoinEntities { get; }
   }

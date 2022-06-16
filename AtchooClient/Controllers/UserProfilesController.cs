@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using AtchooClient.Models;
+using System.IO;
+using System.Web;
 
 namespace AtchooClient.Controllers
 {
@@ -38,6 +40,14 @@ namespace AtchooClient.Controllers
     [HttpPost]
     public async Task<ActionResult> Create(UserProfile userProfile, int UserAllergyId)
     {
+      // string fileName =Path.GetFileNameWithoutExtension(userProfile.ImageFile.FileName);
+      // string extension =Path.GetExtension(userProfile.ImageFile.FileName);
+      // fileName = fileName + extension;
+      // userProfile.ProfileImg ="~/wwwroot/img/" + fileName;
+      // fileName =Path.Combine(Server.MapPath("~/wwwroot/img/"),fileName);
+      // userProfile.ImageFile.SaveAs(fileName);
+      
+      
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       userProfile.User = currentUser;
@@ -48,6 +58,7 @@ namespace AtchooClient.Controllers
         _db.ProfileAllergies.Add(new ProfileAllergy() { UserAllergyId = UserAllergyId, UserProfileId = userProfile.UserProfileId });
       }
       _db.SaveChanges();
+      ModelState.Clear();
       return RedirectToAction("Index");
     }
     public ActionResult Details(int id)
