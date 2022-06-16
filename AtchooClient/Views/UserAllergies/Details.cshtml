@@ -9,14 +9,12 @@
           justify-content: center;
           height: 50%;
         ">
-        <div class="matches-card-title" style="display: flex; justify-content: center; align-items: center;">
-
+        <div class="matches-card-title" style="display: flex; justify-content: center; align-items: center;  margin-bottom: 5%;">
             <h3>@Html.DisplayNameFor(model => model.Allergy) matches for:
-                <span style="green">
+                <span style="color: gold;">
                     @Html.DisplayFor(model => model.Allergy)
                 </span>
-            </h3>
-            
+            </h3>          
         </div>
 
 
@@ -32,7 +30,7 @@
               @foreach(var join in Model.JoinEntities)
               {
                 <div class="col-md-4 mb-4">
-                  <div class="card h-100" style="max-width: 20rem;">
+                  <div class="card h-100" style="max-width: 20rem; box-shadow: 1px 4px 4px">
                     <div class="card-title">
                       <h4 style="margin: 5%">@join.userProfile.Name</h4>
                     </div>

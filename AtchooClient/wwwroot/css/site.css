@@ -1,5 +1,7 @@
 @import url("~/lib/bootstrap/dist/css/bootstrap.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 
 html, a {
   font-family: "Josefin Sans";
@@ -7,6 +9,12 @@ html, a {
   /* background-color: #26277caa; */
   font-size: 20px;
 }
+
+p {
+  font-family: "Source Sans Pro";
+  font-weight: 500;
+}
+
 
 
 /*****
@@ -435,16 +443,21 @@ UserProfiles/Details/{id}  &&  User Card
   filter: drop-shadow(1px 1px rgba(82, 82, 82, 0.3));
 }
 
-/** UserAllergies Matches Cards **/
+/** hover animations**/
 
-.row .card:hover {
-  background-color: antiquewhite;
-  transform: scale(1.05);
-  transition: ease-out;
+.row .card:hover, .list-button:hover {
+  background-color: papayawhip;
+  transform: scale(1.03);
+  transition: ease-in;
   transition-delay: 10ms;
-  transition-duration: 200ms;
+  transition-duration: 240ms;
+  color: indigo;
+  cursor: grabbing;
 }
 
+.list-button:hover {
+  color: var(--sneeze-green);
+}
 
 
 /*****
